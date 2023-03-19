@@ -18,7 +18,6 @@ from urllib.request import url2pathname
 from poetry.core.constraints.version import Version
 from poetry.core.constraints.version import VersionRange
 from poetry.core.constraints.version import parse_constraint
-from poetry.core.pyproject.toml import PyProjectTOML
 from poetry.core.version.markers import SingleMarkerLike
 from poetry.core.version.markers import dnf
 
@@ -123,6 +122,8 @@ def is_python_project(path: Path) -> bool:
     """Return true if the directory is a Python project"""
     if not path.is_dir():
         return False
+
+    from poetry.core.pyproject.toml import PyProjectTOML
 
     setup_py = path / "setup.py"
     setup_cfg = path / "setup.cfg"
